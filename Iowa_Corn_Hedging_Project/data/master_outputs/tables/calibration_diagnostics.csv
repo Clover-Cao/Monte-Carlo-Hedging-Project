@@ -1,0 +1,11 @@
+section,model,predictors,eligible_for_selection,n_observations,n_estimated_parameters,r_squared,adjusted_r_squared,in_sample_rmse,residual_standard_deviation,loocv_rmse,selected
+yield_model,trend_only,trend_index,True,30,2,0.7554806195955213,0.7467477845810755,11.37875215014267,11.778127450659326,11.93429431654748,False
+yield_model,trend_plus_precip,trend_index + may_july_precip_inches,True,30,3,0.7649434028476318,0.7475318030585676,11.156403591935176,11.75988194886629,12.627938223174036,False
+yield_model,trend_plus_temperature,trend_index + may_july_avg_temp_f,True,30,3,0.7857282645109949,0.7698562841044019,10.651737079847365,11.227916736529497,12.623243396991633,False
+yield_model,trend_plus_pdsi,trend_index + july_pdsi,True,30,3,0.7945555437810882,0.7793374359130206,10.430021599005059,10.994208099202458,11.920131115919418,True
+yield_model,trend_plus_precip_temperature,trend_index + may_july_precip_inches + may_july_avg_temp_f,False,30,4,0.7874718507551397,0.7629493719961173,10.608310543692717,11.395153453151549,12.985768164655116,False
+yield_model,trend_plus_precip_pdsi,trend_index + may_july_precip_inches + july_pdsi,False,30,4,0.8100408812328774,0.7881225213751325,10.029241003672917,10.773132987084518,11.755480095904835,False
+yield_model,trend_plus_temperature_pdsi,trend_index + may_july_avg_temp_f + july_pdsi,False,30,4,0.8058108479261326,0.7834044073022248,10.140292374783018,10.892421295036144,12.486852570240083,False
+yield_model,trend_plus_all_weather,trend_index + may_july_precip_inches + may_july_avg_temp_f + july_pdsi,False,30,5,0.8219004942156936,0.7934045732902045,9.711120691481886,10.637999722759591,12.442014611932539,False
+price_model,july_futures_change,july_weather_yield_signal,True,30,2,0.021509755569879108,-0.013436324588339543,0.6056522848044267,0.6269096740208122,0.689253837437829,True
+price_model,harvest_futures_change,final_yield_surprise_vs_trend,True,30,2,0.14432272748043362,0.11376282489044898,0.7206441444991827,0.7459375569909312,0.8043588324865083,True

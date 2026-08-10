@@ -1,0 +1,7 @@
+dataset,provider,classification,url,notes
+Iowa corn yield,USDA NASS,official,https://www.nass.usda.gov/Quick_Stats/Ag_Overview/stateOverview.php?state=Iowa,Annual state overview; one page per year
+Iowa May-July weather,NOAA NCEI,official,https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series,"Precipitation, average temperature and July PDSI"
+December corn daily closes,Barchart via TradingCharts,secondary market-data source,https://futures.tradingcharts.com/historical/,Used because long CME settlement history is not available as a simple free bulk download
+Corn futures contract specification,CME Group,official,https://www.cmegroup.com/rulebook/CBOT/I/10.pdf,"5,000 bushels; 1/4-cent minimum tick"
+Iowa harvest basis,Iowa State Ag Decision Maker,academic extension,https://www.extension.iastate.edu/agdm/crops/pdf/a2-41.pdf,"State average, 2020/21-2024/25"
+Iowa production cost,Iowa State Ag Decision Maker,academic extension,https://www.extension.iastate.edu/agdm/crops/pdf/a1-20.pdf,2026 corn-following-soybeans budget

@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "calibration_years": "1996-2025",
+    "forecast_year": 2026,
+    "historical_observations": 30
+  },
+  "selected_yield_model": {
+    "name": "trend_plus_pdsi",
+    "coefficients": {
+      "intercept": 138.36036079649048,
+      "trend_index": 2.318714127208457,
+      "july_pdsi": 1.9078736905214677
+    },
+    "adjusted_r_squared": 0.7793374359130206,
+    "loocv_rmse_bu_per_acre": 11.920131115919418,
+    "interpretation": "Historical association, not a causal estimate."
+  },
+  "trend_yield_model": {
+    "intercept": 140.92688172043003,
+    "trend_index": 2.3107897664071206
+  },
+  "july_futures_change_model": {
+    "intercept": -0.05375000000000177,
+    "yield_signal_slope": -0.019741301483522246,
+    "r_squared": 0.021509755569879108,
+    "loocv_rmse_usd_per_bushel": 0.689253837437829
+  },
+  "harvest_futures_change_model": {
+    "intercept": -0.15066666666666537,
+    "yield_surprise_slope": -0.026009894449960203,
+    "r_squared": 0.14432272748043362,
+    "loocv_rmse_usd_per_bushel": 0.8043588324865083
+  },
+  "operating_and_decision_assumptions": {
+    "calibration_start_year": 1996,
+    "calibration_end_year": 2025,
+    "forecast_year": 2026,
+    "n_simulations": 10000,
+    "random_seed": 8122026,
+    "farm_acres": 1000,
+    "production_cost_usd_per_acre": 911.98,
+    "preseason_futures_usd_per_bushel": 4.7,
+    "futures_price_floor_usd_per_bushel": 1.5,
+    "cash_price_floor_usd_per_bushel": 0.5,
+    "basis_low_usd_per_bushel": -0.28,
+    "basis_mode_usd_per_bushel": -0.2,
+    "basis_high_usd_per_bushel": -0.11,
+    "contract_size_bushels": 5000,
+    "transaction_cost_usd_per_contract_side": 25.0,
+    "initial_margin_usd_per_contract": 2500.0,
+    "annual_margin_financing_rate": 0.06,
+    "days_preseason_to_july": 136,
+    "days_july_to_harvest": 108,
+    "days_per_year": 365,
+    "margin_liquidity_reserve_usd": 50000.0,
+    "fixed_hedge_ratios": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "adaptive_initial_ratio": 0.5,
+    "drought_target_ratio": 0.25,
+    "normal_target_ratio": 0.5,
+    "wet_target_ratio": 0.75,
+    "lower_tail_probability": 0.05,
+    "max_mean_profit_shortfall_fraction": 0.05,
+    "max_overhedge_probability": 0.1,
+    "z_95": 1.96
+  }
+}

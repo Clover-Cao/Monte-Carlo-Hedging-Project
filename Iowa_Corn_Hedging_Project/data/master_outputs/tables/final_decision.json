@@ -1,0 +1,40 @@
+{
+  "main_model": {
+    "preferred_strategy": "Fixed 75%",
+    "eligible_strategies": [
+      "Fixed 75%",
+      "Fixed 50%",
+      "Updated 50%",
+      "Weather-signal 25/50/75%",
+      "Fixed 25%",
+      "Fixed 0%"
+    ],
+    "unhedged_mean_profit_usd_per_acre": -1.5944606006329363,
+    "minimum_eligible_mean_profit_usd_per_acre": -1.674183630664583,
+    "maximum_overhedge_probability": 0.1,
+    "primary_objective": "Maximize lower-tail 5% profit CVaR among eligible strategies.",
+    "expected_profit_constraint": "Mean profit cannot be more than 5% of the absolute unhedged mean below the unhedged mean.",
+    "overhedge_constraint": "Over-hedging probability cannot exceed 10%.",
+    "tie_breaker": "If CVaR ties, choose the higher expected profit."
+  },
+  "july_beta_zero_robustness": {
+    "preferred_strategy": "Fixed 75%",
+    "eligible_strategies": [
+      "Fixed 75%",
+      "Fixed 50%",
+      "Updated 50%",
+      "Weather-signal 25/50/75%",
+      "Fixed 25%",
+      "Fixed 0%"
+    ],
+    "unhedged_mean_profit_usd_per_acre": -1.5944606006329363,
+    "minimum_eligible_mean_profit_usd_per_acre": -1.674183630664583,
+    "maximum_overhedge_probability": 0.1,
+    "primary_objective": "Maximize lower-tail 5% profit CVaR among eligible strategies.",
+    "expected_profit_constraint": "Mean profit cannot be more than 5% of the absolute unhedged mean below the unhedged mean.",
+    "overhedge_constraint": "Over-hedging probability cannot exceed 10%.",
+    "tie_breaker": "If CVaR ties, choose the higher expected profit."
+  },
+  "recommendation_unchanged": true,
+  "correct_interpretation": "Under the stated data, cost, basis, price-model, and implementation assumptions, Fixed 75% provides the strongest lower-tail profit protection among eligible strategies, and the recommendation is unchanged when the weak July price-signal coefficient is set to zero."
+}

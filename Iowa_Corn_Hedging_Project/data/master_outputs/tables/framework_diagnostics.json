@@ -1,0 +1,64 @@
+{
+  "historical_years": 30,
+  "scenario_count": 10000,
+  "strategy_count": 7,
+  "random_seed": 8122026,
+  "weather_and_yield_residual_sampling": "independent historical rows",
+  "price_residual_sampling": "same-year July/harvest pair",
+  "paired_price_residual_correlation": 0.34724696594224463,
+  "pdsi_lower_tercile": -0.2166666666666667,
+  "pdsi_upper_tercile": 2.3099999999999996,
+  "futures_price_floor_count_july": 0,
+  "futures_price_floor_count_harvest": 0,
+  "cash_price_floor_count": 0,
+  "main_preferred_strategy": "Fixed 75%",
+  "robustness_preferred_strategy": "Fixed 75%",
+  "recommendation_stable_when_july_beta_is_zero": true,
+  "futures_pnl_identity": "N0*Q*(F0-FH) + (NJ-N0)*Q*(FJuly-FH) = N0*Q*(F0-FJuly) + NJ*Q*(FJuly-FH)",
+  "margin_call_limit": "Two-date liquidity proxy at July and harvest; not a daily broker ledger.",
+  "yield_distribution_bu_per_acre": {
+    "mean": 210.33010946432464,
+    "standard_deviation": 11.337297337634308,
+    "minimum": 169.4619977809184,
+    "p5": 189.90111170727437,
+    "median": 210.9438317425821,
+    "p95": 227.9052136878528,
+    "maximum": 241.97081146310813
+  },
+  "july_futures_distribution_usd_per_bushel": {
+    "mean": 4.637581762133066,
+    "standard_deviation": 0.6069642578032922,
+    "minimum": 3.634148272702855,
+    "p5": 3.936713560792026,
+    "median": 4.465600117183559,
+    "p95": 5.8972504008693996,
+    "maximum": 6.755309879260992
+  },
+  "harvest_futures_distribution_usd_per_bushel": {
+    "mean": 4.54129944609113,
+    "standard_deviation": 0.7837335500240272,
+    "minimum": 2.217827509777322,
+    "p5": 3.1027968865858275,
+    "median": 4.517942345518543,
+    "p95": 5.943430819969635,
+    "maximum": 7.253098275407113
+  },
+  "basis_distribution_usd_per_bushel": {
+    "mean": -0.19706122942428797,
+    "standard_deviation": 0.03499159972588205,
+    "minimum": -0.2797101731280488,
+    "p5": -0.25426073409045136,
+    "median": -0.19768195383373957,
+    "p95": -0.13839837268110958,
+    "maximum": -0.11131786394558904
+  },
+  "cash_price_distribution_usd_per_bushel": {
+    "mean": 4.344238216666841,
+    "standard_deviation": 0.7845871974653958,
+    "minimum": 1.971379955654474,
+    "p5": 2.899034216793665,
+    "median": 4.318426558282681,
+    "p95": 5.753405038692819,
+    "maximum": 7.107830752406826
+  }
+}
