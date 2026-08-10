@@ -17,7 +17,7 @@ Under uncertainty in growing-season weather, crop yield, and harvest-time prices
 
 The simulation is designed around a representative 1,000-acre Iowa corn farm and will:
 
-- simulate correlated weather, yield, futures-price, and basis outcomes;
+- simulate correlated weather, yield, futures price, and basis outcomes;
 - compare fixed hedge ratios of 0%, 25%, 50%, 75%, and 100%;
 - compare the fixed strategies with weather-updated and weather-signal strategies;
 - use the December corn futures contract and 5,000-bushel contract sizes;
