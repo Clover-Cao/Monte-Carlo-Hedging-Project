@@ -60,15 +60,219 @@ These values are project inputs, not forecasts or financial advice. See `process
 
 Source URLs and notes are recorded in `processed/source_manifest.csv`. Raw files are retained to support traceability.
 
-## Reproducibility guidelines
+## How to Run the Master Framework
 
-- Do not edit files in `raw/` manually; preserve them as downloaded.
-- Put cleaned or derived datasets in `processed/`.
-- Add scripts that build processed data instead of making undocumented spreadsheet edits.
-- Use relative paths in code so it works on every teammate's computer.
-- Record new sources in `processed/source_manifest.csv`.
-- Keep the simulation seed fixed for benchmark results and document any alternative seeds.
-- Do not commit credentials, API keys, temporary files, or large generated outputs.
+### Requirements
+
+Use Python 3.10 or later. The framework requires:
+
+- NumPy
+- pandas
+- Matplotlib
+- JupyterLab or Jupyter Notebook if using the notebook interface
+
+Keep the following files together:
+
+```text
+project_folder/
+├── Iowa_Corn_Hedging_Master_Framework.py
+raw/
+├── Iowa_Corn_Hedging_Master_Framework.ipynb
+├── processed/
+│   └── iowa_calibration_panel_1996_2025.csv
+└── master_outputs/                        # Created automatically
+```
+
+The master run uses the processed calibration panel. The files in `raw/` are retained for provenance but are not required during a normal simulation run.
+
+### 1. Create a Python environment
+
+From the project folder, create and activate a virtual environment.
+
+macOS or Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+Install the required packages:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install numpy pandas matplotlib jupyterlab
+```
+
+### 2. Run the Jupyter notebook
+
+Start JupyterLab from the project folder:
+
+```bash
+jupyter lab
+```
+
+Open:
+
+```text
+Iowa_Corn_Hedging_Master_Framework.ipynb
+```
+
+Then select:
+
+```text
+Kernel → Restart Kernel and Run All Cells
+```
+
+The notebook contains one executable runner cell. It loads the complete implementation from `Iowa_Corn_Hedging_Master_Framework.py`, runs the 10,000-scenario benchmark, validates the results, and displays the strategy comparison.
+
+Do not move the notebook away from the master Python file and `processed/` folder unless their paths are updated.
+
+### 3. Run the framework directly from Python
+
+The same analysis can be run without Jupyter:
+
+```bash
+python Iowa_Corn_Hedging_Master_Framework.py
+```
+
+The default run uses:
+
+- 10,000 Monte Carlo scenarios;
+- random seed `8122026`;
+- all seven hedge strategies; and
+- the July-price-coefficient robustness test.
+
+A successful run should report:
+
+```text
+Preferred strategy: Fixed 75%
+July beta = 0 preferred strategy: Fixed 75%
+Recommendation unchanged: True
+```
+
+### Optional command-line settings
+
+Run a smaller development simulation:
+
+```bash
+python Iowa_Corn_Hedging_Master_Framework.py \
+  --iterations 1000 \
+  --summary-only \
+  --no-plots
+```
+
+Use a different random seed:
+
+```bash
+python Iowa_Corn_Hedging_Master_Framework.py --seed 12345
+```
+
+Write results to a different folder:
+
+```bash
+python Iowa_Corn_Hedging_Master_Framework.py \
+  --output-dir alternative_outputs
+```
+
+Available options can be displayed with:
+
+```bash
+python Iowa_Corn_Hedging_Master_Framework.py --help
+```
+
+### 4. Review the generated outputs
+
+The standard run creates:
+
+```text
+master_outputs/
+├── figures/
+│   ├── strategy_comparison.png
+│   └── july_beta_zero_robustness.png
+└── tables/
+    ├── calibration_diagnostics.csv
+    ├── historical_shock_library.csv
+    ├── model_parameters.json
+    ├── framework_diagnostics.json
+    ├── common_scenarios_10000.csv.gz
+    ├── main_strategy_results_70000.csv.gz
+    ├── main_strategy_summary.csv
+    ├── july_beta_zero_strategy_results_70000.csv.gz
+    ├── july_beta_zero_strategy_summary.csv
+    └── final_decision.json
+```
+
+The most important files are:
+
+- `main_strategy_summary.csv` for the seven-strategy comparison;
+- `final_decision.json` for the recommendation and decision rules;
+- `framework_diagnostics.json` for model checks and distribution summaries; and
+- `strategy_comparison.png` for the main visual results.
+
+### 5. Run the automated tests
+
+If the development dependencies are installed, run:
+
+```bash
+python -m pytest
+```
+
+The tests verify reproducibility, common random numbers, futures P&L accounting, strategy rules, benchmark values, and the July-beta-zero robustness result.
+
+### Troubleshooting
+
+#### `FileNotFoundError` for the project folder or calibration panel
+
+Confirm that these items are in the same project folder:
+
+```text
+Iowa_Corn_Hedging_Master_Framework.py
+Iowa_Corn_Hedging_Master_Framework.ipynb
+processed/iowa_calibration_panel_1996_2025.csv
+```
+
+Start Jupyter from that folder rather than from a parent directory or Downloads.
+
+#### `ModuleNotFoundError`
+
+Install the required packages in the active environment:
+
+```bash
+python -m pip install numpy pandas matplotlib jupyterlab
+```
+
+Ensure Jupyter is using the same Python environment in which the packages were installed.
+
+#### A notebook cell reports that a name is undefined
+
+Close any older copy of the notebook, reopen the current master notebook, and select:
+
+```text
+Kernel → Restart Kernel and Run All Cells
+```
+
+The current notebook contains only one executable runner cell and should not produce cell-order errors.
+
+#### Results differ from the benchmark
+
+Confirm that the default values have not been changed:
+
+```text
+Iterations: 10,000
+Random seed: 8,122,026
+March futures price: $4.70/bu
+Farm acres: 1,000
+Production cost: $911.98/acre
+```
+
+Changing the seed, simulation count, costs, or model assumptions can change the reported strategy metrics.
 
 ## Project status
 
