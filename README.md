@@ -26,26 +26,6 @@ The simulation is designed around a representative 1,000-acre Iowa corn farm and
 
 The main performance measures are expected revenue, revenue volatility, probability of a loss, 5% Value at Risk (VaR), 5% Conditional Value at Risk (CVaR), over-hedging probability, margin-call risk, and transaction costs.
 
-## Repository contents
-
-```text
-.
-|-- raw/
-|   |-- barchart_december_contracts/   # Historical December futures data
-|   |-- usda_nass_iowa_overview/       # Archived Iowa agriculture pages
-|   `-- noaa_iowa_*.csv                # Iowa precipitation, temperature, and PDSI
-|-- processed/
-|   |-- iowa_calibration_panel_1996_2025.csv
-|   |-- historical_shock_library.csv
-|   |-- calibration_parameters.json
-|   |-- calibration_diagnostics.csv
-|   |-- baseline_2026_preseason_futures.csv
-|   `-- source_manifest.csv
-`-- reference/                         # Iowa State extension reference PDFs
-```
-
-The current repository contains the data and calibrated inputs. Simulation code, tests, results, and figures can be added as the project develops, ideally under `src/`, `tests/`, `results/`, and `figures/`.
-
 ## Key datasets
 
 | File | Description |
